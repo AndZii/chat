@@ -1,0 +1,52 @@
+<div class="row">
+  <table class="table table-striped">
+
+    <tr>
+      <th>Name</th>
+      <th>Message</th>
+    </tr>
+
+    <% if @mgs.empty? %>
+        <tr>
+      <td>Empty</td>
+        <td>Empty</td>
+        </tr>
+    <% else %>
+
+        <% @mgs.each do |message| %>
+
+            <tr>
+              <td><%= message.login %></td>
+              <td><%= message.text %></td>
+            </tr>
+
+        <% end %>
+
+    <% end %>
+
+  </table>
+</div>
+
+
+
+
+<%= form_for(@message, class: "form-horizontal") do |f|%>
+
+    <div class="form-group">
+    <%= f.label :login, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :login, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :text, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_area :text, class: "form-control" %>
+      </div>
+    </div>
+
+
+<%= f.submit class: "btn btn-success" %>
+
+<% end %>
